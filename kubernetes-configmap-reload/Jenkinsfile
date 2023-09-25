@@ -1,14 +1,15 @@
 @Library('jenkins-shared-library@main') _
 pipeline {
 
-  agent any
-  
-  parameters {
+  agent {
+	label 'batch4'
+  }
+	  parameters {
 	choice(name: 'action', choices: 'create\nrollback', description: 'Create/rollback of the deployment')
     string(name: 'ImageName', description: "Name of the docker build", defaultValue: "kubernetes-configmap-reload")
 	string(name: 'ImageTag', description: "Name of the docker build",defaultValue: "v1")
 	string(name: 'AppName', description: "Name of the Application",defaultValue: "kubernetes-configmap-reload")
-    string(name: 'docker_repo', description: "Name of docker repository",defaultValue: "praveensingam1994")
+    string(name: 'docker_repo', description: "Name of docker repository",defaultValue: "sujatad12")
   }
       
   tools{ 
@@ -22,7 +23,7 @@ pipeline {
             steps {
                 gitCheckout(
                     branch: "main",
-                    url: "https://github.com/praveen1994dec/spring-cloud-kubernetes.git"
+                    url: "https://github.com/sujatadoddamani/spring-cloud-kubernetes.git"
                 )
             }
         }
