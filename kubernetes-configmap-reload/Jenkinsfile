@@ -2,7 +2,7 @@
 pipeline {
 
   agent {
-	label 'batch4'
+	label 'batch5'
   }
 	  parameters {
 	choice(name: 'action', choices: 'create\nrollback', description: 'Create/rollback of the deployment')
